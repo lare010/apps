@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>APP_PRESTAMOS</title>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"  media="all">
+    <link rel="stylesheet" href="css/index.css"  media="all">
+    
+    <!-- JS -->
+    <script  src="js/jquery.js"></script>
+    <script  src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script  src="js/functions.js"></script>
+</head>
+<body>
+	<!--.................... HOME .....................-->
+
+    <div data-role="page" id="home" data-dialog="true" data-close-btn="none" data-position-to="window">
+        <div data-role="header">
+            <h1><b>Form. Login</b></h1> 
+        </div>
+
+        <div data-role="main" class="ui-content">
+	        <form  onsubmit="event.preventDefault();">
+	        	<label for="usuario"><b>Usuario:</b></label>
+	            <input type="text" class="login" name="usuario" id="usuario" placeholder="Usuario" value="" tabindex="1">
+	        	<label for="password"><b>Contraseña:</b></label>
+	            <input type="password" class="login" name="password" id="password" placeholder="contraseña" autocomplete="off" value="" tabindex="2">
+            	<br/>
+            	<input id="loginbtn"  type="button"  data-icon="check" data-iconpos="right" value="Aceptar" tabindex="3">
+
+	        </form> 
+            
+
+        </div>
+
+        <div data-role="footer">
+            <h4></h4>
+        </div>
+    </div>
+
+	<!--....................PAGINA MENU.....................-->
+
+    <div data-role="page" id="menu">
+        <div data-role="header" data-position="fixed">
+           <h1><label id="labelusuario"><b>MENU PRINCIPAL</b></label></h1> 
+        </div>
+
+        <div data-role="content">
+            <ul data-role="listview">
+                <li><a href="#resumencxc" data-transition="slide">Clientes del día</a></li>
+                <li><a href="#estadocuentas" data-transition="slide">Estado de cuentas</a></li>
+                <li><a href="#ingresos" data-transition="slide">Recibos de Ingreso</a></li>
+                <li><a href="#home" data-transition="slide">Salir del Sistema</a></li> 
+            </ul>          
+            <div class="app">
+                <h2 class="enlinea">San Mobile</h2>
+                <div id="deviceready" class="blink">
+                    <p class="event listening">Dispositivo Fuera de Linea</p>
+                    <p class="event received">Dispositivo En Linea</p>
+                </div>
+            </div>    
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <h4></h4>
+        </div>
+    </div> 
+
+	<!--....................PAGINA CXC.....................-->
+
+    <div data-role="page" id="resumencxc">
+        <div data-role="header" data-position="fixed">
+            <a href="#menu" data-transition="slide" data-direction="reverse" class=" ui-shadow ui-btn ui-corner-all ui-btn-a menu-movile"></a>
+        	<h1><b>Cxc Clientes</b></h1> 
+	   		<a href="#" id="btnCpendiente" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext">cargar</a>
+        </div>
+
+        <div data-role="content">  
+            <ul data-role="listview" id="ListaDatos" data-filter="true" data-filter-placeholder="Filtro clientes..." data-inset="true" >
+            </ul>
+        </div>
+
+
+        <div data-role="footer" data-position='fixed'>
+            <h4></h4>
+        </div>
+    </div>
+
+    <!--....................PAGINA ESTADO DE CUENTAS.....................-->
+    <div data-role="page" id="estadocuentas">
+        <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="a" id="busq_cliente">
+            <form class="userform"> 
+                <a href="#" id="closepanel" data-rel="close" class="btnoff">Close panel</a>
+                <!--h4>Busqueda de Clientes</h4-->
+                <ul data-role="listview" id="ListaCliente" data-filter="true" data-filter-placeholder="Filtro de Clientes..." data-inset="true" >
+                </ul>
+            </form>        
+        </div><!-- /panel -->
+
+        <div data-role="header" data-position="fixed">
+            <a href="#menu" data-transition="slide" data-direction="reverse" class=" ui-shadow ui-btn ui-corner-all ui-btn-a menu-movile"></a>
+            <h1><b>Estado de Cuentas</b></h1> 
+            <a href="#busq_cliente" class="frmBusqCliente" id="bqdcl"  data-icon="search" data-iconpos="notext" tabindex="6"></a>          
+        </div>
+
+        <div data-role="content">  
+            <a href="#" id="grande" class="ui-btn ui-mini">grande</a>
+            <a href="#" id="pequeno" class="ui-btn ui-mini">pequeno</a>
+
+            <table data-role="table" id="table-custom-2" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive " data-column-btn-theme="b" data-column-btn-text="Columnas..." data-column-popup-theme="a">
+
+                    <thead>
+                      <tr class="ui-bar-d">
+                        <th data-priority="2">FECHA</th>
+                        <th data-priority="3">MOVIMIENTO</th>
+                        <th>DOCUMENTO</th>
+                        <th data-priority="1"><abbr title="">DEBITO</abbr></th>
+                        <th data-priority="5">CREDITO</th>
+                        <th data-priority="6">BALANCE</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>03-07-2015</th>
+                        <td><a  data-rel="external">PRESTAMOS</a></td>
+                        <td>000000000010</td>
+                        <td>100</td>
+                        <td>0</td>
+                        <td>500</td>
+                      </tr>
+                      <tr>
+                        <th>04-07-2015</th>
+                        <td><a  data-rel="external">INGRESOS</a></td>
+                        <td>000000000011</td>
+                        <td>0</td>
+                        <td>200</td>
+                        <td>600</td>
+                      </tr>
+                      <tr>
+                        <th>05-07-2015</th>
+                        <td><a  data-rel="external">PRESTAMOS</a></td>
+                        <td>000000000012</td>
+                        <td>300</td>
+                        <td>0</td>
+                        <td>700</td>
+                      </tr>
+                      <tr>
+                        <th>06-07-2015</th>
+                        <td><a  data-rel="external">INGRESOS</a></td>
+                        <td>000000000013</td>
+                        <td>0</td>
+                        <td>400</td>
+                        <td>800</td>
+                      </tr>
+                      <tr>
+                        <th>07-07-2015</th>
+                        <td><a  data-rel="external">PRESTAMOS</a></td>
+                        <td>000000000014</td>
+                        <td>500</td>
+                        <td>0</td>
+                        <td>900</td>
+                      </tr>
+                      <tr>
+                        <th>08-07-2015</th>
+                        <td><a  data-rel="external">INGRESOS</a></td>
+                        <td>000000000015</td>
+                        <td>0</td>
+                        <td>600</td>
+                        <td>1000</td>
+                      </tr>
+                      <tr>
+                        <th>09-07-2015</th>
+                        <td><a  data-rel="external">PRESTAMOS</a></td>
+                        <td>000000000016</td>
+                        <td>700</td>
+                        <td>0</td>
+                        <td>1100</td>
+                      </tr>
+                      <tr>
+                        <th>10-07-2015</th>
+                        <td><a  data-rel="external">INGRESOS</a></td>
+                        <td>000000000017</td>
+                        <td>0</td>
+                        <td>800</td>
+                        <td>1200</td>
+                      </tr>
+                    </tbody>
+            </table>
+        </div>
+
+
+        <div data-role="footer" data-position='fixed'>
+            <h4></h4>
+        </div>
+    </div>
+
+	<!--....................PAGINA RECIBO INGRESO.....................-->
+
+    <div data-role="page" id="ingresos">
+        <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="a" id="busq_cliente1">
+            <form class="userform"> 
+                <a href="#" id="closepanel1" data-rel="close" class="btnoff">Close panel</a>
+                <!--h4>Busqueda de Clientes</h4-->
+                <ul data-role="listview" id="ListaCliente1" data-filter="true" data-filter-placeholder="Filtro de Clientes..." data-inset="true" >
+                </ul>
+            </form>
+        </div><!-- /panel -->
+
+        <div data-role="header" data-position="fixed">
+            <a href="#menu" data-transition="slide" data-direction="reverse" class=" ui-shadow ui-btn ui-corner-all ui-btn-a menu-movile"></a>
+        	<h1><b>INGRESOS</b></h1> 
+            <a href="#busq_cliente1" class="frmBusqCliente" id="bqdcl1"  data-icon="search" data-iconpos="notext" tabindex="5"></a>          
+            <a href="#" id="printrecibo" class="btnprint ui-shadow ui-btn ui-icon-save ui-corner-all ui-btn-a" ></a>         
+        </div>
+
+        <div data-role="content" > 
+
+			<form id="frmingreso">
+
+				<ul data-role="listview" data-inset="true" >
+			            <li class="ui-field-contain">
+			                <label for="recibo">RECIBO:</label>
+			                <input type="number" min="1" max="12" name="recibo" id="recibo" value="" data-clear-btn="true" tabindex="4" >
+			            </li>
+
+			             <li class="ui-field-contain">
+			                <label for="prestamo">PRESTAMO:</label>
+			                <input type="text" name="prestamo" id="prestamo" value=""  disabled="true" >
+			            </li>
+
+			            <li class="ui-field-contain">
+			                <label for="fecha">FECHA:</label>
+			                <input type="text" name="fecha" id="fecha" value="" disabled="true">
+			            </li>
+
+			            <li class="ui-field-contain">
+			                <label for="cliente">CLIENTE:</label>
+			            <textarea cols="40" rows="10" name="cliente" id="cliente" disabled="true"></textarea>
+			            </li>
+
+			            <li class="ui-field-contain">
+    						<div id="cuotasaldar">
+                              <fieldset data-role="controlgroup"  data-type="vertical" id="ListaCuotas" ></fieldset>
+                            </div>
+                        </li>
+			            
+			            <li class="ui-field-contain">
+			                <label for="concepto">CONCEPTO:</label>
+			            <textarea cols="40" rows="8" name="concepto" id="concepto" disabled="true"></textarea>
+			            </li>
+
+			             <li class="ui-field-contain">
+			                <label for="totalp">TOTAL PAGADO:</label>
+			                <input type="text" name="totalp" id="totalp" value="" disabled="true" >
+			            </li>
+
+			            <li class="ui-body ui-body-b">
+			                <fieldset class="ui-grid-a">
+		                        <div class="ui-block-a">
+                                    <button type="button" id="btncalcelingreso" class="ui-btn ui-icon-delete ui-btn-icon-left ui-corner-all ui-btn-a">Cancel</button>
+                                </div>
+		                        <div class="ui-block-b">
+                                    <button type="button" id="btnsalvaringreso" class="ui-btn ui-icon-check ui-btn-icon-left ui-corner-all ui-btn-a" >Salvar</button>
+                                </div>
+			                </fieldset>
+			            </li>
+
+
+			            <!--li class="ui-field-contain">
+			                <label for="flip2">Flip switch:</label>
+			                <select name="flip2" id="flip2" data-role="slider">
+			                    <option value="off">Off</option>
+			                    <option value="on">On</option>
+			                </select>
+			            </li>
+			            <li class="ui-field-contain">
+			                <label for="slider2">Slider:</label>
+			                <input type="range" name="slider2" id="slider2" value="0" min="0" max="100" data-highlight="true">
+			            </li>
+
+			            <li class="ui-field-contain">
+			                <label for="select-choice-1" class="select">Choose shipping method:</label>
+			                <select name="select-choice-1" id="select-choice-1">
+			                    <option value="standard">Standard: 7 day</option>
+			                    <option value="rush">Rush: 3 days</option>
+			                    <option value="express">Express: next day</option>
+			                    <option value="overnight">Overnight</option>
+			                </select>
+			            </li-->
+				</ul>
+
+			</form>
+
+        </div>
+
+        <div data-role="footer" data-position='fixed'>
+            <h4></h4>
+        </div>
+    </div>	
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+</body>
+</html>
