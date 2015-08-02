@@ -15,7 +15,7 @@ $(function()
 	var ArrCheck = []; //array que guarda los datos de cada check pulsado
 	var cAbonada = [];  //array que guarga los datos de la cuota abonada por si hay que retrocederla
 	var $zona    = '';
-	var $zona    = '001';
+	//var $zona    = '001';
 	var $intentos = 0; //variable qeu controla los intentos de la tecla astras  para alir del sistema
 
 
