@@ -62,11 +62,39 @@ body {
     visibility: hidden;
 }
 
+th, td {
+    border-bottom: 2px solid #d6d6d6;
+}
+
+
+.coltrP{
+   background-color: rgba(255, 255, 0, 0.61); 
+}
+
+.coltrI:nth-child(even) {
+    background: #e9e9e9;
+}
+
+.filcolor{
+    background: #e9e9e9;
+}
+
+#etdebito,#etbalancee,#etcredito,#etbalancep{
+    text-align: right;
+}
 
 #btnCpendiente, #frmBusqCliente {
     top: 10px;
 }
 
+.abonos label {
+  display: inline;
+  margin: -13px 0px -0.6em;
+}
+
+#cAbono{
+    display: none;
+}
 .btnoff{
     display: none;
 }
@@ -93,12 +121,11 @@ float: right;
     background:url(../img/icon.png) no-repeat center top; /* 170px x 200px */
     position:absolute;             /* position in the center of the screen */
     left:50%;
-    top:50%;
     height:50px;                   /* text area height */
     width:225px;                   /* text area width */
     text-align:center;
-    padding:100px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:40px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+    padding: 130px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin: -10px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
                                    /* offset horizontal: half of text area width */
 }
 
@@ -107,7 +134,7 @@ float: right;
     .app {
         background-position:left center;
         padding:4px 0px 74px 96px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-24px 0px 0px -198px;  /* offset vertical: half of image height */
+        margin:-10px 0px 0px -198px;  /* offset vertical: half of image height */
                                       /* offset horizontal: half of image width and text area width */
     }
 }

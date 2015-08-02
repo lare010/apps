@@ -27,7 +27,8 @@
 	        	<label for="password"><b>Contraseña:</b></label>
 	            <input type="password" class="login" name="password" id="password" placeholder="contraseña" autocomplete="off" value="" tabindex="2">
             	<br/>
-            	<input id="loginbtn"  type="button"  data-icon="check" data-iconpos="right" value="Aceptar" tabindex="3">
+                <input id="loginbtn"  type="button"  data-icon="check" data-iconpos="right" value="Aceptar" tabindex="3">
+            	<!--input id="log"  type="button" href="#" data-icon="check" data-iconpos="right" value="prueba" tabindex=""-->
 
 	        </form> 
             
@@ -48,19 +49,30 @@
 
         <div data-role="content">
             <ul data-role="listview">
-                <li><a href="#resumencxc" data-transition="slide">Clientes del día</a></li>
-                <li><a href="#estadocuentas" data-transition="slide">Estado de cuentas</a></li>
+                <li><a href="#resumencxc" class="btnCpendiente" data-transition="slide">Clientes del día</a></li>
                 <li><a href="#ingresos" data-transition="slide">Recibos de Ingreso</a></li>
+                <div data-role="collapsible" >
+                    <h3>REPORTES</h3>
+                    <ul data-role="listview">
+                        <li><a href="#estadocuentas" data-transition="slide">Estado de cuentas</a></li>
+                        <li><a href="#">Abonos por zonas</a></li>
+                    </ul>
+                </div>      
                 <li><a href="#home" data-transition="slide">Salir del Sistema</a></li> 
-            </ul>          
-            <div class="app">
-                <h2 class="enlinea">San Mobile</h2>
-                <div id="deviceready" class="blink">
-                    <p class="event listening">Dispositivo Fuera de Linea</p>
-                    <p class="event received">Dispositivo En Linea</p>
-                </div>
-            </div>    
+            </ul> <br> 
+            <table data-role="table"  > 
+                <tbody>
+                    <div class="app" >
+                        <div id="deviceready" class="blink">
+                            <p class="event listening">Dispositivo Fuera de Linea</p>
+                            <p class="event received">Dispositivo En Linea</p>
+                        </div>
+                    </div> 
+                </tbody>        
+            </table>  
+
         </div>
+
         <div data-role="footer" data-position="fixed">
             <h4></h4>
         </div>
@@ -72,7 +84,7 @@
         <div data-role="header" data-position="fixed">
             <a href="#menu" data-transition="slide" data-direction="reverse" class=" ui-shadow ui-btn ui-corner-all ui-btn-a menu-movile"></a>
         	<h1><b>Cxc Clientes</b></h1> 
-	   		<a href="#" id="btnCpendiente" class="ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext">cargar</a>
+	   		<a href="#" id="btnCpend" class="btnCpendiente ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext">cargar</a>
         </div>
 
         <div data-role="content">  
@@ -97,97 +109,88 @@
             </form>        
         </div><!-- /panel -->
 
-        <div data-role="header" data-position="fixed">
+        <div data-role="header" data-position="fixed" data-tap-toggle="false">
             <a href="#menu" data-transition="slide" data-direction="reverse" class=" ui-shadow ui-btn ui-corner-all ui-btn-a menu-movile"></a>
             <h1><b>Estado de Cuentas</b></h1> 
             <a href="#busq_cliente" class="frmBusqCliente" id="bqdcl"  data-icon="search" data-iconpos="notext" tabindex="6"></a>          
         </div>
 
         <div data-role="content">  
-            <a href="#" id="grande" class="ui-btn ui-mini">grande</a>
-            <a href="#" id="pequeno" class="ui-btn ui-mini">pequeno</a>
+ 
+            <form id="frmestadocuentas">
+  
+                <ul data-role="listview"  >
+                    <li class="ui-field-contain">
+                        <fieldset class="ui-grid-a">
+                            <div class="ui-block-a">
+                                <label for="etcliente">CLIENTE:</label>
+                                <input type="number" min="1" max="5" name="etcliente" id="etcliente" value="" disabled="true" >
+                            </div>
+                            <div class="ui-block-b">
+                                <label for="etprestamo">PRESTAMO:</label>
+                                <input type="number" min="1" max="8" name="etprestamo" id="etprestamo" value="" data-clear-btn="true">
+                            </div>
+                        </fieldset>
+                    <textarea cols="40" rows="10" name="etclientedesc" id="etclientedesc" disabled="true"></textarea>
+                    </li>
+                    <li class="ui-field-contain">
+                        <fieldset class="ui-grid-a">
+                            <div class="ui-block-a">
+                                <label for="etfechaini">FECHA INCIAL:</label>
+                                <input type="date"  name="etfechaini" id="etfechaini" value="1997-12-02"  >
+                            </div>
+                            <div class="ui-block-b">
+                                <label for="etfechafin">FECHA FINAL:</label>
+                                <input type="date" name="etfechafin" id="etfechafin"  value="" >
+                            </div>
+                        </fieldset>
+                    </li>
 
-            <table data-role="table" id="table-custom-2" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive " data-column-btn-theme="b" data-column-btn-text="Columnas..." data-column-popup-theme="a">
+                    <li>  
+                        <fieldset class="ui-grid-a">
+                            <div class="ui-block-a">
+                                <div ><a href="#" id="etcancel" class="ui-btn ui-mini ui-corner-all ui-btn-b ui-icon-delete ui-btn-icon-left ui-shadow-icon">CANCELAR</a></div>      
+                            </div>
+                            <div class="ui-block-b">
+                                <div ><a href="#" id="etproces" class="ui-btn ui-mini ui-corner-all ui-btn-b ui-icon-check ui-btn-icon-left ui-shadow-icon">PROCESAR</a></div>      
+                            </div>
+                        </fieldset>
+                    </li> 
+                    <li>  
+                        <fieldset class="ui-grid-a">
+                            <div class="ui-block-a">
+                                <label for="etdebito">DEBITO:</label>
+                                <input type="text" name="etdebito" id="etdebito" value="" disabled="true" class="txtalin" >
+                                <label for="etbalancee">BALANCE E:</label>
+                                <input type="text" name="etbalancee" id="etbalancee" value="" disabled="true"  >
+                            </div>
+                            <div class="ui-block-b">
+                                <label for="etcredito">CREDITO:</label>
+                                <input type="text"  name="etcredito" id="etcredito" value="" disabled="true" >
+                                <label for="etbalancep">BALANCE P:</label>
+                                <input type="text" name="etbalancep" id="etbalancep" value="" disabled="true"  >
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <table data-role="table" id="ettable" data-mode="reflow" class="ui-body-a ui-shadow table-stroke ui-responsive " >
+                            <thead>
+                              <tr>
+                                <th class="filcolor">FECHA</th>
+                                <th class="filcolor">MOVIMIENTO</th>
+                                <th class="filcolor">DOCUMENTO</th>
+                                <th class="filcolor" style="text-align: right;">DEBITO</th>
+                                <th class="filcolor" style="text-align: right;">CREDITO</th>
+                                <th class="filcolor" style="text-align: right;">BALANCE</th>
+                              </tr>
+                            </thead>
+                            <tbody id="tbetc"> </tbody>
+                        </table>                        
+                    </li>
+                </ul>
 
-                    <thead>
-                      <tr class="ui-bar-d">
-                        <th data-priority="2">FECHA</th>
-                        <th data-priority="3">MOVIMIENTO</th>
-                        <th>DOCUMENTO</th>
-                        <th data-priority="1"><abbr title="">DEBITO</abbr></th>
-                        <th data-priority="5">CREDITO</th>
-                        <th data-priority="6">BALANCE</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th>03-07-2015</th>
-                        <td><a  data-rel="external">PRESTAMOS</a></td>
-                        <td>000000000010</td>
-                        <td>100</td>
-                        <td>0</td>
-                        <td>500</td>
-                      </tr>
-                      <tr>
-                        <th>04-07-2015</th>
-                        <td><a  data-rel="external">INGRESOS</a></td>
-                        <td>000000000011</td>
-                        <td>0</td>
-                        <td>200</td>
-                        <td>600</td>
-                      </tr>
-                      <tr>
-                        <th>05-07-2015</th>
-                        <td><a  data-rel="external">PRESTAMOS</a></td>
-                        <td>000000000012</td>
-                        <td>300</td>
-                        <td>0</td>
-                        <td>700</td>
-                      </tr>
-                      <tr>
-                        <th>06-07-2015</th>
-                        <td><a  data-rel="external">INGRESOS</a></td>
-                        <td>000000000013</td>
-                        <td>0</td>
-                        <td>400</td>
-                        <td>800</td>
-                      </tr>
-                      <tr>
-                        <th>07-07-2015</th>
-                        <td><a  data-rel="external">PRESTAMOS</a></td>
-                        <td>000000000014</td>
-                        <td>500</td>
-                        <td>0</td>
-                        <td>900</td>
-                      </tr>
-                      <tr>
-                        <th>08-07-2015</th>
-                        <td><a  data-rel="external">INGRESOS</a></td>
-                        <td>000000000015</td>
-                        <td>0</td>
-                        <td>600</td>
-                        <td>1000</td>
-                      </tr>
-                      <tr>
-                        <th>09-07-2015</th>
-                        <td><a  data-rel="external">PRESTAMOS</a></td>
-                        <td>000000000016</td>
-                        <td>700</td>
-                        <td>0</td>
-                        <td>1100</td>
-                      </tr>
-                      <tr>
-                        <th>10-07-2015</th>
-                        <td><a  data-rel="external">INGRESOS</a></td>
-                        <td>000000000017</td>
-                        <td>0</td>
-                        <td>800</td>
-                        <td>1200</td>
-                      </tr>
-                    </tbody>
-            </table>
+            </form>
         </div>
-
 
         <div data-role="footer" data-position='fixed'>
             <h4></h4>
@@ -206,7 +209,7 @@
             </form>
         </div><!-- /panel -->
 
-        <div data-role="header" data-position="fixed">
+        <div data-role="header" data-position="fixed" data-tap-toggle="false">
             <a href="#menu" data-transition="slide" data-direction="reverse" class=" ui-shadow ui-btn ui-corner-all ui-btn-a menu-movile"></a>
         	<h1><b>INGRESOS</b></h1> 
             <a href="#busq_cliente1" class="frmBusqCliente" id="bqdcl1"  data-icon="search" data-iconpos="notext" tabindex="5"></a>          
@@ -237,11 +240,18 @@
 			                <label for="cliente">CLIENTE:</label>
 			            <textarea cols="40" rows="10" name="cliente" id="cliente" disabled="true"></textarea>
 			            </li>
-
+                        <!--container para las cuotas del cliente  -->
 			            <li class="ui-field-contain">
-    						<div id="cuotasaldar">
-                              <fieldset data-role="controlgroup"  data-type="vertical" id="ListaCuotas" ></fieldset>
+                            <div class="abonos btnoff">
+                                <label >Hacer un abono:</label>
+                                <select name="onoff_abono" id="onoff_abono" data-role="flipswitch" data-mini="true">
+                                    <option value="off">No</option>
+                                    <option value="on">Si</option>
+                                </select>
                             </div>
+
+                            <input type="number" name="cAbono" id="cAbono" value="" placeholder="Cantidad a abonar" tabindex="4">
+                            <fieldset data-role="controlgroup"  data-type="vertical" id="ListaCuotas" ></fieldset>
                         </li>
 			            
 			            <li class="ui-field-contain">
@@ -264,29 +274,6 @@
                                 </div>
 			                </fieldset>
 			            </li>
-
-
-			            <!--li class="ui-field-contain">
-			                <label for="flip2">Flip switch:</label>
-			                <select name="flip2" id="flip2" data-role="slider">
-			                    <option value="off">Off</option>
-			                    <option value="on">On</option>
-			                </select>
-			            </li>
-			            <li class="ui-field-contain">
-			                <label for="slider2">Slider:</label>
-			                <input type="range" name="slider2" id="slider2" value="0" min="0" max="100" data-highlight="true">
-			            </li>
-
-			            <li class="ui-field-contain">
-			                <label for="select-choice-1" class="select">Choose shipping method:</label>
-			                <select name="select-choice-1" id="select-choice-1">
-			                    <option value="standard">Standard: 7 day</option>
-			                    <option value="rush">Rush: 3 days</option>
-			                    <option value="express">Express: next day</option>
-			                    <option value="overnight">Overnight</option>
-			                </select>
-			            </li-->
 				</ul>
 
 			</form>
